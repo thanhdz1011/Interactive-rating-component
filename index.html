@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Rating state start -->
+    <div class="rating-state content">
+      <img src="./images/icon-star.svg" alt="" class="rating-star-icon" />
+      <h1 class="rating-top">How did we do?</h1>
+
+      <p class="rating-text">
+        Please let us know how we did with your support request. All feedback is
+        appreciated to help us improve our offering!
+      </p>
+      <div class="rating-nums">
+        <span class="rating-num">1</span>
+        <span class="rating-num">2</span>
+        <span class="rating-num">3</span>
+        <span class="rating-num">4</span>
+        <span class="rating-num">5</span>
+      </div>
+      <span class="rating-submit">SUBMIT</span>
+    </div>
+
+    <!-- Rating state end -->
+
+    <!-- Thank you state start -->
+    <div class="rating-done">
+      <img src="./images/illustration-thank-you.svg" alt="" class="phone-img" />
+      <p class="choose">You selected <span class="rated">1</span> out of 5</p>
+      <h3 class="thank">Thank you!</h3>
+      <p class="text1">
+        We appreciate you taking the time to give a rating. If you ever need
+        more support, don’t hesitate to get in touch!
+      </p>
+    </div>
+
+    <!-- Thank you state end -->
+
+    <!-- <div class="attribution content">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+    <script>
+      var ratingNum = document.querySelectorAll(".rating-num");
+      var submit = document.querySelector('.rating-submit'),
+          body = document.querySelector('body'),
+          rated =document.querySelector('.rated');
+      ratingNum.forEach((item) =>
+        item.addEventListener("click", () => {
+          item.classList.toggle("onclick");
+          var i = item.innerHTML;
+          ratingNum.forEach((item1) => {
+            if (
+              item1.innerHTML !== i &&
+              item1.classList.contains("onclick") === true
+            ) {
+              item1.classList.remove("onclick");
+            }
+          });
+        submit.addEventListener('click',()=>{
+          body.classList.toggle('done');
+          rated.innerHTML = i;
+        })
+        })
+      );
+      
+    </script>
+  </body>
+</html>
